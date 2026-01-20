@@ -47,5 +47,41 @@ This tool automatically:
 ## How to Run the Program
 
 ### Basic Scan (No Deletion)
-```bash
+
 python duplicate_finder.py <folder_path>
+
+Example:
+python duplicate_finder.py C:\Users\Lenovo\Downloads
+---
+Scan and Delete Duplicates
+
+python duplicate_finder.py <folder_path> --delete
+Example:
+python duplicate_finder.py C:\Users\Lenovo\Downloads --delete
+---
+Sample Output
+
+DUPLICATE FILES FOUND:
+
+Hash: abc123...
+  C:\Users\Lenovo\Downloads\file1.pdf
+  C:\Users\Lenovo\Downloads\file1 (1).pdf
+  Execution screenshots are available in the screenshots/ folder.
+  Design Choices
+SHA-256 hashing ensures accurate duplicate detection
+Chunk-based file reading supports large files
+Command-line interface keeps the tool lightweight and fast
+Delete confirmation prevents accidental data loss
+Assumptions
+Files with identical content are considered duplicates
+User has permission to read and delete files in the target directory
+Limitations
+Does not detect similar files with small differences
+No graphical interface (CLI-based by design)
+Future Enhancements
+Interactive duplicate selection
+Logging deleted files
+GUI-based interface
+Export results to a report file
+Author
+Nithya H S
