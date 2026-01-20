@@ -1,37 +1,51 @@
-# Duplicate File Finder – Python CLI Tool
+# Duplicate File Detector (Command Line Tool)
 
-## Problem
-My system had thousands of files in Downloads and Desktop with many duplicate PDFs, images and documents.
-This wastes disk space and makes file management difficult.
+## Overview
+Duplicate files accumulate over time due to repeated downloads, backups, or file copies.
+These duplicates waste storage space and make file management difficult.
+
+This project is a Python-based command-line tool that scans a directory,
+detects duplicate files using cryptographic hashing, and optionally removes them
+after user confirmation.
+
+---
+
+## Problem Statement
+Manually identifying duplicate files in large folders such as Downloads or Documents
+is time-consuming and error-prone. Operating systems do not provide a reliable built-in
+solution to detect duplicates based on file content.
+
+---
 
 ## Solution
-This tool scans a folder, detects duplicate files using SHA-256 hashing, and optionally deletes them safely.
+This tool automatically:
+- Scans all files inside a given directory (recursively)
+- Generates a SHA-256 hash for each file
+- Groups files with identical hashes as duplicates
+- Displays duplicate files clearly
+- Optionally deletes duplicate copies safely
 
-## Features
-- Recursively scans folders
-- Detects duplicates using cryptographic hashing
-- Safe delete mode with confirmation
-- Works on Windows/Linux/Mac
+---
 
-## How to Run
+## How the System Works
+1. The program walks through all subfolders using `os.walk`
+2. Each file is read in binary mode in chunks
+3. A SHA-256 hash is generated for file content
+4. Files with the same hash are grouped
+5. Duplicate groups are printed
+6. If delete mode is enabled, user confirmation is requested
+7. Only duplicate copies are removed (original file remains)
 
-1. Open Command Prompt  
-2. Go to project folder:
-   cd C:\Users\Lenovo\Desktop\duplicate_finder
+---
 
-3. Scan only:
-   python duplicate_finder.py C:\Users\Lenovo\Downloads
+## Requirements
+- Python 3.x
+- No external libraries required
 
-4. Scan and delete:
-   python duplicate_finder.py C:\Users\Lenovo\Downloads --delete
+---
 
-## Design Decisions
-- Used SHA-256 because filenames are unreliable  
-- Used argparse for clean CLI design  
-- Delete mode requires human confirmation for safety
+## How to Run the Program
 
-## Future Improvements
-- Progress bar  
-- Ignore file types  
-- GUI version  
-- Cloud storage support
+### Basic Scan (No Deletion)
+```bash
+python duplicate_finder.py <folder_path>
