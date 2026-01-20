@@ -1,0 +1,26 @@
+Duplicate File Finder – Technical Report
+
+This project solves the problem of duplicate files by hashing file contents.
+
+1. File Traversal
+os.walk() is used to recursively scan the folder.
+
+2. Hashing
+Each file is read in chunks and hashed using SHA-256.
+Identical files produce identical hashes.
+
+3. Data Structure
+A dictionary maps hash → list of file paths.
+
+4. Detection
+Hashes with more than one path are duplicates.
+
+5. Deletion Logic
+--delete flag activates delete mode.
+User confirmation prevents accidental loss.
+
+Why hashing?
+Filename comparison is unreliable.
+Hashing guarantees content equality.
+
+This design is efficient, safe, and scalable.
