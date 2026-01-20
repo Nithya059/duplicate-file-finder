@@ -46,20 +46,21 @@ This tool automatically:
 
 ## How to Run the Program
 
-### Basic Scan (No Deletion)
+## Basic Scan (No Deletion)
 
 python duplicate_finder.py <folder_path>
-
 Example:
 python duplicate_finder.py C:\Users\Lenovo\Downloads
 ---
+
 Scan and Delete Duplicates
 
 python duplicate_finder.py <folder_path> --delete
 Example:
 python duplicate_finder.py C:\Users\Lenovo\Downloads --delete
 ---
-### Sample Output
+
+## Sample Output
 
 DUPLICATE FILES FOUND:
 
